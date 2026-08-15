@@ -12,7 +12,11 @@ public class Jugador {
       this.equipo = equipo;
     };
     public void mostrarInfo(){
-        System.out.println("EL nombre del jugador es: " + nombre);
+        System.out.println("Los datos del jugador son: ");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Dorsal: " + dorsal);
+        System.out.println("Posición: " + posicion);
+        System.out.println("Equipo: " + equipo);
     };
 
 }
