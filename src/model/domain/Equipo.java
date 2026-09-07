@@ -6,12 +6,13 @@ import java.util.List;
 public class Equipo {
     private List<Jugador> jugadores;
     
-    public Equipo(){
+    public Equipo() {
         this.jugadores = new ArrayList<>();
     }
 
-    public void agregarJugador(Jugador jugador){
+    public void agregarJugador(Jugador jugador) {
         this.jugadores.add(jugador);
+        System.out.println("El jugador se ha añadido");
     }
 
     public List<Jugador> getJugadores() {
@@ -21,6 +22,4 @@ public class Equipo {
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
-
-    
 }

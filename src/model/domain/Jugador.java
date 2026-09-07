@@ -9,8 +9,8 @@ public class Jugador extends Persona {
         return numeroCamiseta;
     }
 
-    public void setNumeroCamiseta(int muneroCamiseta) {
-        this.numeroCamiseta = muneroCamiseta;
+    public void setNumeroCamiseta(int numeroCamiseta) {
+        this.numeroCamiseta = numeroCamiseta;
     }
 
     public String getPosicion() {

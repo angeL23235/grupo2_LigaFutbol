@@ -5,28 +5,30 @@ import java.time.LocalDate;
 public class Partido {
     private LocalDate fecha;
     private String resultado;
-    private Equipo equipo1;
-    private Equipo equipo2;
+    private Equipo equipoLocal;
+    private Equipo equipoVisitante;
 
-    public Partido(LocalDate fecha, String resultado) {
+    public Partido(LocalDate fecha, String resultado, Equipo equipoLocal, Equipo equipoVisitante) {
         this.fecha = fecha;
         this.resultado = resultado;
+        this.equipoLocal = equipoLocal;
+        this.equipoVisitante = equipoVisitante;
     }
 
-    public Equipo getEquipo1() {
-        return equipo1;
+    public Equipo getEquipoLocal() {
+        return equipoLocal;
     }
 
-    public void setEquipo1(Equipo equipo1) {
-        this.equipo1 = equipo1;
+    public void setEquipoLocal(Equipo equipo1) {
+        this.equipoLocal = equipo1;
     }
 
-    public Equipo getEquipo2() {
-        return equipo2;
+    public Equipo getEquipoVisitante() {
+        return equipoVisitante;
     }
 
-    public void setEquipo2(Equipo equipo2) {
-        this.equipo2 = equipo2;
+    public void setEquipoVisitante(Equipo equipo2) {
+        this.equipoVisitante = equipo2;
     }
 
     public LocalDate getFecha() {
