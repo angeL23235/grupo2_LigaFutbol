@@ -15,9 +15,9 @@ public class Arbitro extends Persona {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+
     @Override 
     public String rolEnPartido (){
-        return "";
+        return "Arbitro";
     }
 }

@@ -1,16 +1,16 @@
 package model.domain;
 
 public class Jugador extends Persona {
-    private int muneroCamiseta;
+    private int numeroCamiseta;
     private String posicion;
     private int golesTotales;
 
-    public int getMuneroCamiseta() {
-        return muneroCamiseta;
+    public int getNumeroCamiseta() {
+        return numeroCamiseta;
     }
 
-    public void setMuneroCamiseta(int muneroCamiseta) {
-        this.muneroCamiseta = muneroCamiseta;
+    public void setNumeroCamiseta(int muneroCamiseta) {
+        this.numeroCamiseta = muneroCamiseta;
     }
 
     public String getPosicion() {
@@ -29,15 +29,16 @@ public class Jugador extends Persona {
         this.golesTotales = golesTotales;
     }
 
-    public Jugador(String identificacion, String nombre, int muneroCamiseta, String posicion, int golesTotales) {
+    public Jugador(String identificacion, String nombre, int numeroCamiseta, String posicion, int golesTotales) {
         super(identificacion, nombre);
-        this.muneroCamiseta = muneroCamiseta;
+        this.numeroCamiseta = numeroCamiseta;
         this.posicion = posicion;
         this.golesTotales = golesTotales;
     }
 
+    @Override
     public String rolEnPartido() {
-        return "";
+        return "Jugador";
     }
 
 }

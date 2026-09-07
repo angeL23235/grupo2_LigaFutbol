@@ -11,7 +11,7 @@ public abstract class Persona implements RolEnPartido {
 
    @Override 
    public String datosResumen() {
-      return "ID: " + this.identificacion + "Nombre: " + this.nombre;
+      return "ID: " + this.identificacion + " Nombre: " + this.nombre;
    }
 
   
