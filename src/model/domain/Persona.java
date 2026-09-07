@@ -9,6 +9,7 @@ public abstract class Persona implements RolEnPartido {
       this.nombre = nombre;
    }
 
+   @Override 
    public String datosResumen() {
       return "ID: " + this.identificacion + "Nombre: " + this.nombre;
    }
@@ -30,8 +31,5 @@ public abstract class Persona implements RolEnPartido {
       this.nombre = nombre;
    }
 
-   public String rolEnPartido() {
-      return "Medio Campo";
-   }
 }
 
