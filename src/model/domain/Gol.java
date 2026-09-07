@@ -5,9 +5,10 @@ public class Gol {
    private String tipo;
    private Jugador jugador;
 
-   public Gol(int minuto, String tipo) {
+   public Gol(int minuto, String tipo, Jugador jugador) {
       this.minuto = minuto;
       this.tipo = tipo;
+      this.jugador = jugador;
    }
 
    public int getMinuto() {
