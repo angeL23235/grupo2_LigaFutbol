@@ -1,63 +1,47 @@
-# Retroalimentación — Laboratorio Evaluativo — Codificación de Diseño OO (Momento 1)
+# Retroalimentación — Laboratorio 1: Codificación del diseño OO
 
 **Grupo:** Grupo2 · **Proyecto:** Liga de Fútbol
-**Fecha límite:** 2026-09-08 23:59 -0500 · **Commit evaluado:** `3290a8f` (2026-09-07 03:00:09 -0500)
+**Fecha límite:** 2026-09-08 23:59 · **Versión revisada:** commit `3290a8f`
 
-## Calificación
+Muy buen trabajo. El diseño está casi completo y el programa funciona sin problemas.
+
+## Nota
 
 | Criterio | Peso | Nota (0-5) |
 |---|---|---|
-| Codificación correcta del UML | 60% | 4.5 |
-| Pruebas en el App — creación de objetos | 20% | 5.0 |
+| El código sigue el diagrama UML | 60% | 4.5 |
+| Pruebas: creación de objetos en el programa | 20% | 5.0 |
 | Buenas prácticas de programación | 20% | 5.0 |
 | **Nota del laboratorio** | | **4.70** |
 
-```
-nota_laboratorio = 0.60 × 4.5 + 0.20 × 5.0 + 0.20 × 5.0 = 2.70 + 1.00 + 1.00 = 4.70
-nota_final_curso  = (4.70 / 5) × 5% = 4.70%
-```
+La nota se calcula así: 60% diseño UML + 20% pruebas + 20% buenas prácticas.
 
-## Detalle por criterio
+## 1. El código sigue el diagrama UML (4.5)
+**Lo que hicieron bien:**
+- Están las 7 clases del diagrama (`RolEnPartido`, `Persona`, `Jugador`, `Arbitro`, `Equipo`, `Partido`, `Gol`), con los nombres exactos y dentro de `model/domain`.
+- `Persona` es abstracta, implementa `RolEnPartido`, resuelve `datosResumen()` y deja `rolEnPartido()` para que lo resuelva cada hija.
+- `Jugador` hereda de `Persona` y llama a `super(...)`. Además quitaron el atributo `equipo` de tipo texto y en su lugar el `Equipo` guarda a sus jugadores, como pide el diagrama.
+- `Arbitro` hereda de `Persona` y responde `rolEnPartido()` a su manera.
+- `Partido` tiene por separado un `equipoLocal` y un `equipoVisitante`. Muy bien.
+- Todos los atributos son privados y tienen sus getters y setters.
 
-### Codificación correcta del UML
-**Lo que está bien:**
-- Las 7 clases del proyecto (`RolEnPartido`, `Persona`, `Jugador`, `Arbitro`, `Equipo`, `Partido`, `Gol`) están presentes en `src/model/domain/`, con los nombres exactos del diagrama.
-- `Persona` es `abstract`, implementa `RolEnPartido`, resuelve `datosResumen()` y deja `rolEnPartido()` pendiente para los subtipos (`src/model/domain/Persona.java`).
-- `Jugador` extiende `Persona`, ya **no** es abstracta, conserva `numeroCamiseta`, `posicion`, `golesTotales`, invoca `super(...)`, y **eliminó correctamente** el atributo `equipo:String` suelto, reemplazándolo por la composición real con `Equipo` (`src/model/domain/Jugador.java`, `src/model/domain/Equipo.java`).
-- `Arbitro` extiende `Persona`, conserva `categoria` y resuelve `rolEnPartido()` con `@Override` (`src/model/domain/Arbitro.java`).
-- `Partido` implementa correctamente los dos campos separados `equipoLocal` y `equipoVisitante` en vez de una relación genérica (`src/model/domain/Partido.java:5-6`).
-- Todos los atributos son `private`, con getters/setters consistentes.
+**Lo que pueden mejorar:**
+- El constructor de `Persona` no revisa que la `identificacion` venga llena (que no sea nula ni vacía). El diagrama lo pide. Es el único detalle que falta.
 
-**Por mejorar:**
-- El constructor de `Persona` **no valida** que `identificacion` sea no nula/no vacía, como exige explícitamente la rúbrica para este proyecto (`src/model/domain/Persona.java:6-9`); tampoco hay validaciones en los setters (`setIdentificacion`, `setNombre`, etc.). Es la única falla real frente al diagrama, y es aislada.
-- Hay un archivo `App.java` suelto en `src/` (fuera de `model/domain`), sin relación con el diagrama — no afecta la convención de paquetes pero es código residual que conviene limpiar.
+## 2. Pruebas: creación de objetos (5.0)
+**Lo que hicieron bien:**
+- `PruebaCreacionObjetos` crea un `Jugador` y un `Arbitro`, agrega el jugador a un `Equipo` y luego recorre ambos como `Persona`, llamando `rolEnPartido()` sin usar `instanceof`. Así se ve que cada uno responde distinto. Cumple todo lo pedido.
 
-### Pruebas en el App — creación de objetos
-**Lo que está bien:** `PruebaCreacionObjetos.java` (fuera de `model/domain`, junto a `App.java`) crea un `Jugador` y un `Arbitro`, agrega el `Jugador` a un `Equipo` (composición), y recorre ambos como referencias `Persona` en una `List<Persona>`, invocando `rolEnPartido()` polimórficamente **sin `instanceof`**, imprimiendo el resultado de cada uno por consola. Compila y ejecuta sin errores (ver sección de compilación).
+## 3. Buenas prácticas (5.0)
+**Lo que hicieron bien:**
+- Los tres integrantes hicieron commits seguido y con mensajes claros.
+- Cada uno trabajó en su propia rama y luego unieron los cambios.
+- Respetan las reglas de nombres de Java: clases con mayúscula inicial, métodos y atributos con minúscula inicial.
 
-**Por mejorar:** ninguna observación relevante; cumple todo lo pedido.
+## ¿El programa funciona?
+Sí. El código compila sin errores. Al ejecutar `PruebaCreacionObjetos` se agrega el jugador al equipo y se muestra el rol de cada persona ("Jugador" y "Arbitro").
 
-### Buenas prácticas de programación
-**Lo que está bien:** historial con commits frecuentes y descriptivos de tres autores distintos (`Kevin`, `Sebas`/`Sala L 401`, `Angel Londoño`), trabajo en ramas propias (`sebas`, `Angel`, `Kevin`) integradas por `merge`/pull requests, y convenciones Java respetadas (`PascalCase` en clases, `camelCase` en métodos/atributos).
-
-**Por mejorar:** sin observaciones relevantes.
-
-## Compilación y ejecución
-
-Compiló sin errores:
-```
-javac -d out $(find src -name "*.java")   # exit 0
-```
-
-Ejecución de `PruebaCreacionObjetos` (stdin vacío):
-```
-El jugador se ha añadido
-Nombre: SebasKA Rol: Jugador
-Nombre: KevinSA Rol: Arbitro
-```
-Confirma instanciación de los dos subtipos, composición con `Equipo`, y comportamiento polimórfico distinto entre `Jugador` y `Arbitro`.
-
-## Recomendaciones para el siguiente corte
-- Agregar las validaciones de constructor/setters que pide el diagrama (por ejemplo, `identificacion` no nula/vacía en `Persona`), incluso cuando el compilador no las exige — la rúbrica las evalúa explícitamente.
-- Retirar del repositorio archivos sueltos sin propósito (`App.java`) para mantener la estructura limpia.
-- Buen trabajo manteniendo la convención de paquetes `model.domain` y el flujo de ramas por integrante; sigan así.
+## Para el próximo laboratorio
+- Agreguen en el constructor de `Persona` la revisión de que `identificacion` no sea nula ni vacía.
+- En general, incluyan todas las validaciones que pide el diagrama, aunque el programa compile sin ellas.
+- Sigan organizando el código en `model.domain` y trabajando con una rama por integrante.
