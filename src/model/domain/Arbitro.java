@@ -1,9 +1,10 @@
-package grupo2_LigaFutbol.model.domain;
+package model.domain;
 
-public class Arbitro {
+public class Arbitro extends Persona {
     private String categoria;
 
-    public Arbitro(String categoria) {
+    public Arbitro(String identificacion, String nombre, String categoria) {
+        super(identificacion, nombre);
         this.categoria = categoria;
     }
 
@@ -14,8 +15,9 @@ public class Arbitro {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+
+    @Override 
     public String rolEnPartido (){
-        return "";
+        return "Arbitro";
     }
 }
