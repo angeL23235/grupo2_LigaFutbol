@@ -2,17 +2,21 @@ package model.domain;
 
 import java.time.LocalDate;
 
+import structures.ListaSimple;
+
 public class Partido {
     private LocalDate fecha;
     private String resultado;
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
+    private ListaSimple<Gol> goles;
 
     public Partido(LocalDate fecha, String resultado, Equipo equipoLocal, Equipo equipoVisitante) {
         this.fecha = fecha;
         this.resultado = resultado;
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
+        this.goles = new ListaSimple<>();
     }
 
     public Equipo getEquipoLocal() {
@@ -47,4 +51,11 @@ public class Partido {
         this.resultado = resultado;
     }
 
+    public ListaSimple<Gol> getGoles() {
+        return goles;
+    }
+
+    public void setGoles(ListaSimple<Gol> goles) {
+        this.goles = goles;
+    }
 }
