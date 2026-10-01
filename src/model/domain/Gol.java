@@ -35,4 +35,22 @@ public class Gol {
       this.tipo = tipo;
    }
 
+   @Override
+   public boolean equals(Object obj) {
+      if (this == obj) {
+         return true;
+      }
+      if (obj == null || getClass() != obj.getClass()) {
+         return false;
+      }
+      Gol otro = (Gol) obj;
+      if (this.minuto != otro.minuto) {
+         return false;
+      }
+      if (this.jugador == null || otro.jugador == null) {
+         return false;
+      }
+      return this.jugador.equals(otro.jugador);
+   }
+
 }

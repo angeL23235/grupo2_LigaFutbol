@@ -8,15 +8,12 @@ import java.util.List;
 
 public class PruebaCreacionObjetos {
     public static void main(String[] args) {
-        // Instancia
         Jugador jugador1 = new Jugador("123", "SebasKA", 10, "Delantero", 12);
         Arbitro arbitro1 = new Arbitro("2020", "KevinSA", "Lateral");
 
-        // Composición
         Equipo equipo = new Equipo();
-        equipo.agregarJugador(jugador1);
+        equipo.getJugadores().insertarFinal(jugador1);
 
-        // Polimorfismo
         List<Persona> participantes = new ArrayList<>();
         participantes.add(jugador1);
         participantes.add(arbitro1);
