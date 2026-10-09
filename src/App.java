@@ -1,5 +1,7 @@
-public class App{
+import view.MenuListasView;
+
+public class App {
     public static void main(String[] args) {
-        System.out.println("Hola");
+        new MenuListasView().iniciar();
     }
 }

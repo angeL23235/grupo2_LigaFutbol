@@ -1,7 +1,6 @@
 package model.domain;
 
 import java.time.LocalDate;
-
 import structures.ListaSimple;
 
 public class Partido {
@@ -53,9 +52,5 @@ public class Partido {
 
     public ListaSimple<Gol> getGoles() {
         return goles;
-    }
-
-    public void setGoles(ListaSimple<Gol> goles) {
-        this.goles = goles;
     }
 }

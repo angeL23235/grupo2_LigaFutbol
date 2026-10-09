@@ -41,4 +41,16 @@ public class Jugador extends Persona {
         return "Jugador";
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Jugador otro = (Jugador) obj;
+        return getIdentificacion() != null && getIdentificacion().equals(otro.getIdentificacion());
+    }
+
 }
