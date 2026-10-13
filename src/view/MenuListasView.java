@@ -1,7 +1,5 @@
 package view;
 
-import java.time.LocalDate;
-
 import model.domain.Equipo;
 import model.domain.Gol;
 import model.domain.Jugador;
@@ -11,10 +9,18 @@ import service.PartidoService;
 import utils.ConsoleUtils;
 
 public class MenuListasView {
-    private EquipoService equipoService = new EquipoService();
-    private PartidoService partidoService = new PartidoService();
-    private Equipo equipo = new Equipo();
-    private Partido partido = new Partido(LocalDate.now(), "0-0", new Equipo(), new Equipo());
+    private final EquipoService equipoService;
+    private final PartidoService partidoService;
+    private final Equipo equipo;
+    private final Partido partido;
+
+    public MenuListasView(EquipoService equipoService, PartidoService partidoService,
+            Equipo equipo, Partido partido) {
+        this.equipoService = equipoService;
+        this.partidoService = partidoService;
+        this.equipo = equipo;
+        this.partido = partido;
+    }
 
     public void iniciar() {
         int opcion;
@@ -32,12 +38,10 @@ public class MenuListasView {
                 case 8 -> buscarGol();
                 case 9 -> listarGoles();
                 case 10 -> eliminarGol();
-                case 0 -> System.out.println("Saliendo...");
+                case 0 -> System.out.println("Saliendo del menu de listas...");
                 default -> System.out.println("Opcion invalida.");
             }
         } while (opcion != 0);
-
-        ConsoleUtils.cerrar();
     }
 
     private void mostrarMenu() {
@@ -54,7 +58,7 @@ public class MenuListasView {
         System.out.println("8. Buscar gol por minuto e id jugador");
         System.out.println("9. Listar goles");
         System.out.println("10. Eliminar gol");
-        System.out.println("0. Salir");
+        System.out.println("0. Volver");
     }
 
     private void agregarJugador() {
@@ -69,11 +73,9 @@ public class MenuListasView {
 
     private void buscarJugadorPorIndice() {
         int indice = ConsoleUtils.leerEntero("Indice del jugador: ");
-        try {
-            Jugador jugador = equipoService.buscarJugadorPorIndice(equipo, indice);
+        Jugador jugador = equipoService.buscarJugadorPorIndice(equipo, indice);
+        if (jugador != null) {
             System.out.println("Jugador: " + jugador.getNombre() + " | ID: " + jugador.getIdentificacion());
-        } catch (Exception e) {
-            System.out.println("Jugador no encontrado.");
         }
     }
 
@@ -98,20 +100,21 @@ public class MenuListasView {
         int minuto = ConsoleUtils.leerEntero("Minuto: ");
         String tipo = ConsoleUtils.leerTexto("Tipo (normal/penalti/autogol): ");
         String idJugador = ConsoleUtils.leerTexto("Identificacion del jugador: ");
-        String nombreJugador = ConsoleUtils.leerTexto("Nombre del jugador: ");
-        Jugador jugador = new Jugador(idJugador, nombreJugador, 0, "", 0);
+        Jugador jugador = equipoService.buscarJugadorPorIdentificacion(equipo, idJugador);
+        if (jugador == null) {
+            String nombreJugador = ConsoleUtils.leerTexto("Nombre del jugador: ");
+            jugador = new Jugador(idJugador, nombreJugador, 0, "", 0);
+        }
         Gol gol = new Gol(minuto, tipo, jugador);
         partidoService.agregarGol(partido, gol);
     }
 
     private void buscarGolPorIndice() {
         int indice = ConsoleUtils.leerEntero("Indice del gol: ");
-        try {
-            Gol gol = partidoService.buscarGolPorIndice(partido, indice);
+        Gol gol = partidoService.buscarGolPorIndice(partido, indice);
+        if (gol != null) {
             System.out.println("Gol minuto " + gol.getMinuto() + " | Tipo: " + gol.getTipo()
                     + " | Jugador: " + gol.getJugador().getNombre());
-        } catch (Exception e) {
-            System.out.println("Gol no encontrado.");
         }
     }
 
