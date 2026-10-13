@@ -2,7 +2,7 @@ package service;
 
 import model.domain.Equipo;
 import model.domain.Jugador;
-import structures.ListaSimple;
+import model.structures.ListaSimple;
 
 public class EquipoService {
 
@@ -13,11 +13,20 @@ public class EquipoService {
 
     public Jugador buscarJugadorPorIdentificacion(Equipo equipo, String identificacion) {
         Jugador busqueda = new Jugador(identificacion, "", 0, "", 0);
-        return equipo.getJugadores().buscarPorValor(busqueda);
+        Jugador encontrado = equipo.getJugadores().buscarPorValor(busqueda);
+        if (encontrado == null) {
+            System.out.println("Jugador no encontrado.");
+        }
+        return encontrado;
     }
 
     public Jugador buscarJugadorPorIndice(Equipo equipo, int indice) {
-        return equipo.getJugadores().buscarPorIndice(indice);
+        ListaSimple<Jugador> lista = equipo.getJugadores();
+        if (indice < 0 || indice >= lista.getTamano()) {
+            System.out.println("Indice fuera de rango.");
+            return null;
+        }
+        return lista.buscarPorIndice(indice);
     }
 
     public void listarJugadores(Equipo equipo) {

@@ -1,4 +1,4 @@
-package structures;
+package model.structures;
 
 public class Nodo<T> {
     private T dato;
@@ -24,5 +24,4 @@ public class Nodo<T> {
     public void setSiguiente(Nodo<T> siguiente) {
         this.siguiente = siguiente;
     }
-    
 }
