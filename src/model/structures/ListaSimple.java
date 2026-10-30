@@ -1,5 +1,4 @@
 package model.structures;
-
 import java.util.NoSuchElementException;
 
 public class ListaSimple<T> implements OperacionesEstructura<T> {

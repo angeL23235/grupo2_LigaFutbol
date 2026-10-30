@@ -2,7 +2,6 @@ import model.domain.Persona;
 import model.domain.Jugador;
 import model.domain.Arbitro;
 import model.domain.Equipo;
-
 import java.util.ArrayList;
 import java.util.List;
 
