@@ -1,3 +1,5 @@
+package model.structures;
+
 import java.util.NoSuchElementException;
 
 public class ListaDoble<T> {
