@@ -1,5 +1,4 @@
 package model.structures;
-
 public interface OperacionesEstructura<T> {
     void crear(int indice, T dato);
 

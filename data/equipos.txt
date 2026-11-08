@@ -1,0 +1,2 @@
+Tigres;Medellin;Perez
+Leones;Cali;Gomez

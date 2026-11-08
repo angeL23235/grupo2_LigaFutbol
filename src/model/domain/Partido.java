@@ -9,6 +9,8 @@ public class Partido {
     private String resultado;
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
+    private int golesLocal;
+    private int golesVisitante;
     private ListaSimple<Gol> goles;
     private Pila<Gol> golesRecientes;
 
@@ -53,11 +55,32 @@ public class Partido {
         this.resultado = resultado;
     }
 
+    public int getGolesLocal() {
+        return golesLocal;
+    }
+
+    public void setGolesLocal(int golesLocal) {
+        this.golesLocal = golesLocal;
+    }
+
+    public int getGolesVisitante() {
+        return golesVisitante;
+    }
+
+    public void setGolesVisitante(int golesVisitante) {
+        this.golesVisitante = golesVisitante;
+    }
+
     public ListaSimple<Gol> getGoles() {
         return goles;
     }
 
     public Pila<Gol> getGolesRecientes() {
         return golesRecientes;
+    }
+
+    @Override
+    public String toString() {
+        return fecha + " | " + resultado;
     }
 }

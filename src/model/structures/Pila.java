@@ -1,5 +1,4 @@
 package model.structures;
-
 public class Pila<T> {
     private Nodo<T> tope;
     private int tamano;

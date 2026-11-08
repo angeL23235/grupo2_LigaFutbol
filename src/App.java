@@ -3,16 +3,20 @@ import java.time.LocalDate;
 import model.domain.Equipo;
 import model.domain.Partido;
 import service.EquipoService;
+import service.HistorialResultadosService;
 import service.JornadaService;
 import service.PartidoService;
 import utils.ConsoleUtils;
 import view.MenuColaView;
+import view.MenuEquipoView;
+import view.MenuHistorialView;
 import view.MenuListasView;
 import view.MenuPilaView;
 
 public class App {
     public static void main(String[] args) {
         EquipoService equipoService = new EquipoService();
+        HistorialResultadosService historialService = new HistorialResultadosService(equipoService);
         PartidoService partidoService = new PartidoService();
         JornadaService jornadaService = new JornadaService();
         Equipo equipo = new Equipo();
@@ -21,6 +25,8 @@ public class App {
         MenuListasView menuListas = new MenuListasView(equipoService, partidoService, equipo, partido);
         MenuPilaView menuPila = new MenuPilaView(partidoService, partido);
         MenuColaView menuCola = new MenuColaView(jornadaService);
+        MenuEquipoView menuEquipo = new MenuEquipoView(equipoService);
+        MenuHistorialView menuHistorial = new MenuHistorialView(historialService);
 
         int opcion;
         do {
@@ -28,12 +34,16 @@ public class App {
             System.out.println("1. Menu de listas");
             System.out.println("2. Menu de pilas (goles)");
             System.out.println("3. Menu de colas (jornada)");
+            System.out.println("4. Menu de equipos");
+            System.out.println("5. Menu de historial (resultados)");
             System.out.println("0. Salir");
             opcion = ConsoleUtils.leerEntero("Seleccione una opcion: ");
             switch (opcion) {
                 case 1 -> menuListas.iniciar();
                 case 2 -> menuPila.iniciar();
                 case 3 -> menuCola.iniciar();
+                case 4 -> menuEquipo.iniciar();
+                case 5 -> menuHistorial.iniciar();
                 case 0 -> System.out.println("Saliendo del sistema...");
                 default -> System.out.println("Opcion invalida.");
             }

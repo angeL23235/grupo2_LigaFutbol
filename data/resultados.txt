@@ -1,0 +1,3 @@
+2026-10-01;Tigres;Leones;2;1
+2026-10-08;Leones;Tigres;0;0
+2026-10-15;Tigres;Leones;1;3
